@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>提示信息 </title>
+<style type="text/css">
+* { word-wrap: break-word; margin: 0; padding: 0; }
+html, body { border: 0 !important; }
+html, body { -webkit-text-size-adjust:none; }
+body { background: #FFF; }
+body, td, input, textarea, select, button { color: #444; font: 12px/1.6em Verdana, Helvetica,Arial, 'Simsun', sans-serif; }
+.showMsg .guery { white-space: pre-wrap; /* css-3 */white-space: -moz-pre-wrap; /* Mozilla, since 1999 */white-space: -pre-wrap; /* Opera 4-6 */white-space: -o-pre-wrap; /* Opera 7 */	word-wrap: break-word; /* Internet Explorer 5.5+ */ }
+a:link, a:visited { text-decoration: none; color: #0068a6; }
+a:hover, a:active { color: #ff6600; text-decoration: underline; }
+.showMsg { border: 1px solid #ccc; zoom: 1; width: 450px; height: 174px; position: absolute; top: 45%; left:50%; margin: -87px 0 0 -225px; }
+.showMsg h5 {  background: #e4ecf7; padding-left: 15px; height: 25px; line-height: 26px; *line-height: 28px; overflow: hidden; font-size: 18px; text-align: left; }
+.showMsg .content { padding: 30px 20px 10px 20px; font-size: 14px; height: 66px; }
+.showMsg .bottom { margin: 0 1px 1px 1px; line-height: 26px; *line-height: 30px; height: 26px; text-align: center; }
+.showMsg .guery { background-position: left -460px; }
+</style>
+</head>
+<body>
+<div class="showMsg" style="text-align:center">
+	<h5>{$title}</h5>	
+	<div class="content guery" style="display:inline-block;display:-moz-inline-stack;zoom:1;*display:inline;">{$info}</div>
+	<div class="bottom">
+		  <script type="text/javascript">
+          function jump(){
+              var url='{$url}';
+               if(url==''||url=='back'){
+                   window.history.back();
+               } else if (url=='reload'){
+                   window.location.reload();
+               } else {
+                   window.location.href=url;
+               }
+          }
+          if ('{$type}'=='error'){
+               document.write("<input class='bt' type='button' onclick='jump();' value=' 确 定 ' />"); 
+          } else {          
+              document.write("<a href='javascript:jump();'>正在跳转...如果浏览器没有反应请点击此处</a>");
+              setTimeout('jump();','{$second}'*1000);
+          }
+        </script>
+	</div>
+</div>
+

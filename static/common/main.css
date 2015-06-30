@@ -1,0 +1,75 @@
+*{margin:0; padding:0; font-size:12px;}
+
+body{  padding:5px; }
+.M{ padding:2px;}
+form{ margin:0px; padding:0px;}
+a{ color:#000000; text-decoration:none}
+a:hover{ color:#FF0000; text-decoration:underline}
+.tl{ text-align:left}
+img{ border:none}
+.important{color:#FF0000; font-size:14px; font-weight:bold}
+.tb{ background:#C7EACA }/*  background:#D8EED9 ackground:#006F00;*/
+.tb tr.top{background:#A3D8A2 url(m_tbg.jpg) ; font-size:14px; height:28px; line-height:28px; font-weight:bold; color:#004C00}
+.tb tr.top2{ background:#C5D5E7}
+.tb td.top span.l{ float:left;}
+.tb td.top span.r{ float:right; position:relative}
+.tb td.top span.l a{ font-size:12px; font-weight:normal; color:#999999; text-decoration:underline}
+.tb tr.nav,.tb tr.nav td{ background:#D5EFD5; color:#005B00; font-size:14px; font-weight:bold;border-bottom:1px #B4E100 solid; border-top:1px #EFF9EF solid}
+/*border-bottom:0px #B4E100 solid; border:1px #666 solid; */
+.red{ color:red}
+.tb td{ line-height:20px; padding-left:5px;word-break:break-all;word-wrap:break-word;}
+.tb input.nob{ border:none}
+.tb input{ height:20px; border:1px #c0c0c0 solid; border-bottom:1px #ededed solid; border-right:1px #ededed solid; line-height:20px; color:#333333}
+.tb textarea:hover{ border:1px #31A7DF solid}
+.tb input.bt{ border:none;background:#4CB74C; height:25px; padding:2px 5px 2px 5px; color:#FFFFFF; border-right:1px #999 solid;border-bottom:1px #999 solid;font-weight:bold;border-left:1px #B4E100 solid; border-top:1px #B4E100 solid;}
+.tb textarea{border:1px #c0c0c0 solid; border-bottom:1px #ededed solid; border-right:1px #ededed solid;}
+.ctrl_r{background:url(right.gif) no-repeat 5px 5px; text-indent:25px; height:20px; float:left;}
+.tb tr{ color:#000}
+.tr,.trh{background:#ffffff;}
+input.hide,input.show{ width:90%;}
+.tr input.hide,.trh input.hide{ background:#fff; border:1px #fff solid}
+tr.trh:hover input.hide,tr.trh2:hover input.hide{ background:#FFFFC8; border:1px #ffffc8 solid}
+.tr2,.trh2{background:#F6FBF6}
+.tr2 input.hide,.trh2 input.hide{ background:#f6fbf6; border:1px #f6fbf6 solid}
+.trhh p{ padding:0px; border:3px #4CB74C solid; position:absolute; margin-left:50px; margin-top:15px; background:#f9f9f9;width:300px; height:80px; overflow:auto}
+.tb tr.ctrl{ background:#DBEFDB}
+.trh p,.trh2 p{ display:none}
+tr.trh:hover,tr.trh2:hover,tr.trhh:hover{ background:#FFFFC8}
+.h30{ height:30px; overflow:hidden}
+.h30 td{ height:30px; overflow:hidden;}
+.h40{ height:40px; line-height:40px;}
+
+
+
+/*nav*/
+.navi{height:30px;border-bottom:2px #48B148 solid; overflow:hidden}
+.navi div.l{ float:left}
+.navi div.r{ float:right; line-height:30px; text-align:right;}
+.navi a{float:left;height:20px; margin-top:10px;background:#F0F0F0; border:1px #d5d5d5 solid;border-bottom:none; margin-right:5px;line-height:20px; padding:0px 5px 0px 5px; color:#666}
+.navi a.h{background:#48B148;height:25px; border:none; border-bottom:none; line-height:28px; color:#fff; margin-top:5px; font-size:14px; font-weight:bold;}
+.navi a.add:hover,.navi a.add{ background:#48B148 url(add.gif) 5px 6px no-repeat; text-indent:20px;}
+.navi a.admin:hover,.navi a.admin{ background:#48B148 url(admin.gif) 5px 6px no-repeat; text-indent:20px;}
+
+.navi a.admin_folder{ background:#48B148 url(folder.gif) 5px 5px no-repeat; text-indent:20px;}
+.navi a:hover{ color:#ff0000; text-decoration:none;background:#48B148; color:#fff}
+*html .navi a.h img{ margin-top:5px;}
+.path{ background:#48B148; text-indent:15px; color:#FFFFFF; line-height:22px;}
+.path a{ color:#FFFFFF; text-decoration:none}
+.path a:hover{ color:#FFFF00;text-decoration:underline}
+.msg{ border:1px #FF0000 solid; background:#FFFF00; line-height:25px; text-align:left}
+
+.b14{ font-size:14px; font-weight:bold}
+
+.pages{ line-height:25px;}
+.pages li{ float:left; list-style:none; margin-left:2px;height:20px; line-height:20px; font-weight:normal; text-align:center}
+.pages li.cur{ background:#FFFF00; border:1px #ff0000 solid}
+.pages li a{ display:block; text-decoration:none;border:1px #ccc solid;padding-left:4px; padding-right:4px; background:#f9f9f9; }
+.pages li.cur{padding-left:4px; padding-right:4px;}
+.pages li a:hover{ border:1px #ff0000 solid; background:#FFFF00;padding-left:4px; padding-right:4px; text-decoration:none}
+
+
+.imglist li{ width:100%; height:25px; float:left; margin-right:5px; text-align:center;margin-bottom:5px; line-height:20px; list-style:none}
+
+
+.ltit{ font-size:14px;color:#006800; font-variant:normal;font-weight:normal;}
+.fimg{background:#f8f8f8; border:1px #ccc solid; position:absolute; margin-left:100px; }
