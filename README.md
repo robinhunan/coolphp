@@ -28,7 +28,7 @@
         if (!-f $request_filename){
                  rewrite ^/([a-z0-9\-_]+)/([a-z0-9\-_]+)/(.*)$ /index.php?c=$1&a=$2&path=$3 last;
         }
-	(2）在控制层文件，增加路由解析代码，下面的例子将变量解析到$_GET 数组中
+	(2）在控制层文件，增加路由解析代码，下面的例子将变量解析到$_GET 数组中,参数c:/a:/id:[0-9]+ 中：前的表示key，：后的表示对应的值，如果：后有正则表达式，按照正则表达提取数据
 	       route::getInstance()->setPath('/app1_user/home/2.htm/','c:/a:/id:[0-9]+')->fillGet();
 	
 
