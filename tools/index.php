@@ -20,7 +20,7 @@ if('generate'==get($_GET,'act')){
     file::save($mod,$str);
     
     //生成表管理类
-    $mod=SYS_PATH.$ds_table.'.php';
+    $mod=SYS_PATH.'controller/'.$ds_table.'.php';
     $str = file_get_contents(SYS_PATH.'tools/code/modules.php');
     $str = str_replace(array('__table__','__ds_table__'),array($table,$ds_table),$str);
     file::save($mod,$str);
