@@ -21,7 +21,7 @@ class pool
 	/**
 	* 数据库链接池
 	*/
-	public static function db($config='db', $hash=0, $checkConnection=false)
+	public static function db($config='web', $hash=0, $checkConnection=false)
 	{
 		static $db;
 		$conf = config::$$config;

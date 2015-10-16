@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<meta charset="utf-8">
-<title>增加页</title>
-<link rel="stylesheet" type="text/css" href="static/common/main.css" />
-<script type="text/javascript" src="static/common/common.js"></script>
-</head>
-<body> 
+{include file="admin/head.inc.php"}
+<div class="companyInfo-con-right">
   <form action="?c=__table__&a=insert" id="form" method="post">
     <div class="navi">
       <div class="l"><a href="#" class="h add">添加</a> <a href="?c=__table__">返回管理页面</a> </div>
-      <div class="C"></div>
     </div>
     <table width="100%" border="0"  cellpadding="0" cellspacing="1" class="tb tpa"  >
       <tr class="nav">
@@ -21,5 +14,5 @@
       </tr>
     </table>
   </form>
-</body>
-</html>
+</div>
+{include file="admin/foot.inc.php"}

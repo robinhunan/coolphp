@@ -6,13 +6,14 @@
 include_once('./include/config.php');
 include_once SYS_PATH.'include/string.php';
 
-$control = isset($_GET['c']) ? string::filter($_GET['c']) : 'app1_user';
-$action  = isset($_GET['a']) ? string::filter($_GET['a']) : 'home';
+$control = get($_GET,'c','app1_user');
+$action  = get($_GET,'a','home');
 try {
-	include_once SYS_PATH.'controller/'.str_replace('_','/',$control).'.php';
+	//包含控制层文件
+	include_once SYS_PATH.'controller/'.str_replace('_','/',string::filter($control)).'.php';
 	$name = 'c_'.$control;
 	$c = new $name;
-	$c->$action();
+	method_exists($c,$action) && $c->$action();
 } catch (Exception $e) {
 	print $e->getMessage();
 	exit();

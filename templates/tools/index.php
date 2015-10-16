@@ -2,19 +2,20 @@
 <head>
 <meta charset="UTF-8">
 <title>代码生成</title>
-<link rel="stylesheet" type="text/css" href="../static/common/main.css" />
-<script type="text/javascript" src="../static/common/common.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/css/base.css" />
+<link rel="stylesheet" type="text/css" href="../static/css/admin.css" />
+<script type="text/javascript" src="../static/js/common.js"></script>
 </head>
 <script type="text/javascript">
 function changeTable(table){
-    location.href="?table="+table;
+    location.href="?dsn=<?=$dsnName?>&table="+table;
 }
 </script>
 <body>
 
-<div>
+<div style="max-width: 990px;margin: 0 auto;">
   <div class="navi">
-    <div class="l"><a href="?table={$table}" class="admin h">代码生成</a> </div>
+    <div class="l"><a href="?dsn=<?=$dsnName?>&table={$table}" class="admin h">代码生成</a> </div>
     <div class="C"></div>
   </div>
   <div class="trh2">   
@@ -28,7 +29,7 @@ function changeTable(table){
      </select>
   </div>
  <!-- onsubmit="return confirm('你确定要重新生成代码吗?')" -->
-  <form action="?table={$table}&act=generate" method="post">
+  <form action="?dsn=<?=$dsnName?>&table={$table}&act=generate" method="post">
     <table width="100%" border="0"  cellpadding="0" cellspacing="1" class="tb tpa"  >
       <tr class="nav h30">
         <td width='20%' align="left" >字段名 </td>

@@ -44,8 +44,8 @@ class config
 	 * 配置参数
 	 */
 	const KEY="i5%e()|',\"idi&UH";
-	static  $db = array (
-		'dsn'=>array('mysql:host=localhost;port=3306;dbname=test;charset=utf8'),
+	static  $web = array (
+		'dsn'=>array('mysql:host=127.0.0.1;port=3306;dbname=test;charset=utf8'),
 		'user'=>'root',
 		'pass'=>'',
 		'options'=>array(
