@@ -9,7 +9,7 @@ class c_app1_user{
 	function insert(){
 		$app1_user = new app1_user();
 		$res = $app1_user->db->insert($_POST);
-		if ($res ==false) {
+		if ($res === false) {
 			msg::info('back',$app1_user->db->msg,'error');
 		} else {
 			msg::info('?c=app1_user');
@@ -21,7 +21,7 @@ class c_app1_user{
 		$ids  = implode(',',util::convert($_REQUEST['ids']));
 		$app1_user->db->where(sprintf('id in (%s)',$ids));
 		$res = $app1_user->db->delete();
-		if ($res ==false) {
+		if ($res === false) {
 			msg::info('back',$app1_user->db->msg,'error');
 		} else {
 			msg::info('?c=app1_user');
@@ -32,7 +32,7 @@ class c_app1_user{
 		$app1_user = new app1_user();
 		$app1_user->db->where('id='.(int)$_GET['id']);
 		$res = $app1_user->db->update($_POST);
-		if ($res ==false) {
+		if ($res === false) {
 			msg::info('back',$app1_user->db->msg,'error');
 		} else {
 			msg::info('?c=app1_user');

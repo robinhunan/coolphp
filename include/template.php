@@ -8,6 +8,7 @@ class template{
         $tplDir   =  SYS_PATH . 'templates/';
         $parsedDir    = SYS_PATH . 'data/tpl/';
         $parsedFile  = $parsedDir .$tplFile .'.php';
+	//echo $tplDir. $tplFile;
         if (@filemtime($parsedFile) < filemtime($tplDir. $tplFile)) {
             if (!($str=file_get_contents($tplDir . $tplFile))) {
                 exit("read tpl $tplFile error");

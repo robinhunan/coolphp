@@ -1,7 +1,7 @@
 {include file="admin/head.inc.php"}
 <div class="companyInfo-con-right">
   <div class="navi">
-    <div class="l"><a href="?c=manager" class="admin h">列表管理</a> <a href="?c=manager&a=add">添加</a> </div>
+    <div class="l"><a href="?c=manager" class="admin h"><span class="iconfont">&#xe60c;</span>&nbsp;列表管理</a> <a href="?c=manager&a=add">添加</a> </div>
     <div class="C"></div>
   </div>
   <div class="trh2 tb">   

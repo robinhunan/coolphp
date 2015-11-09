@@ -27,7 +27,7 @@ function isPrivateIp ($ip) {
 }
 
 //检查是否在客户端是否是内网ip
-isPrivateIp($_SERVER['REMOTE_ADDR']) || exit('forbbidden');
+//isPrivateIp($_SERVER['REMOTE_ADDR']) || exit('forbbidden');
 
 include_once('../include/config.php');
 
@@ -36,12 +36,20 @@ $table = get($_GET,'table');
 $db = pool::db($dsnName);
 
 if('generate'==get($_GET,'act')){
+    /** 生成校验函数内字符串 */
+    foreach ( $db->query('show full COLUMNS from '.$table) as $row) {
+	$type = strpos($row['Type'],'(')!==false ? substr($row['Type'],0,strpos($row['Type'],'(') ) : $row['Type'];
+	$emptyV= $row['Default']!=null
+	    ? "'".$row['Default'] ."'": (in_array($type,array('tinyint','smallint','mediumint','int','bigint','decimal','float','double','enum')) ? 'null':"''");
+	$checkData .=sprintf("\r\n\t\tcase '%s':\r\n\t\t\t\$arr[\$k]=empty(\$v)?%s:\$v;\r\n\t\tbreak;",$row['Field'], $emptyV );
+    }
     // 生成基本类
     $fields = implode(',' , util::quote(array_keys($_POST['field'])) );
     $ds_table = str_replace('_','/',$table);
     $mod=SYS_PATH.'include/'.$ds_table.'.php';
     $str = file_get_contents(SYS_PATH.'tools/code/include.php');
-    $str = str_replace(array('__dsnName__','__table__','__ds_table__','__fields__'),array($dsnName,$table,$ds_table,$fields),$str);
+    
+    $str = str_replace(array('__dsnName__','__table__','__ds_table__','__fields__','__checkData__'),array($dsnName,$table,$ds_table,$fields,$checkData),$str,$checkData);
     file::save($mod,$str);
     
     //生成表管理类

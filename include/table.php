@@ -32,6 +32,15 @@ abstract class table {
 		$db->table($this->table,$this->fields);
 		return $this->db = $db;
     }
+    /*
+     *数据插入，修改删除前，检查数据类型,
+     * 如果数据表字段设置允许空，传入的值为空，强制设置成null,
+     * 如果数据表字段默认值为数字，传入值为空，转换成数字
+     * @param $strict =true 执行严格检查，数据字段格式不正确返回错误信息
+     */
+    public function checkData($data, &$err=null){
+	return $data;
+    }
 
 
     public function setTableName($strTableName) {

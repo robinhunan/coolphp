@@ -1,19 +1,36 @@
 /* css reset */
+@charset "utf-8";
 
 *{margin:0; padding:0; font-size:12px;}
 form{ margin:0px; padding:0px;}
-a{ text-decoration:none}
-a:hover{ color:#FF0000; text-decoration:underline}
+a:hover{ color:#FF0000; }
 img{ border:none}
-ol,ul,li {list-style: none;}
+ol,ul {list-style: none;}
 button {cursor: pointer}
-a {color: #000}
+a {color: #2A95DE;text-decoration:none}
 .C{clear:both}
-.L{float:right}
-.F{float:left}
+.L{float:left}
+.R{float:right}
 .pages{ line-height:25px;}
 .pages li{ float:left; margin-left:2px;height:20px; line-height:20px; font-weight:normal; text-align:center}
 .pages li.cur{ background:#FFFF00; border:1px #ff0000 solid}
 .pages li a{ display:block; text-decoration:none;border:1px #ccc solid;padding-left:4px; padding-right:4px; background:#f9f9f9; }
 .pages li.cur{padding-left:4px; padding-right:4px;}
 .pages li a:hover{ border:1px #ff0000 solid; background:#FFFF00;padding-left:4px; padding-right:4px; text-decoration:none}
+
+@font-face {font-family: "iconfont";
+  src: url('/static/fonts/iconfont.eot'); /* IE9*/
+  src: url('/static/fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/static/fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('/static/fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('/static/fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}

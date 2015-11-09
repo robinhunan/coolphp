@@ -1,6 +1,6 @@
 <?php
 
-//应用入口文件
+//应用入口文件 @author:yubing
 
 //包含通用的配置文件
 include_once('./include/config.php');

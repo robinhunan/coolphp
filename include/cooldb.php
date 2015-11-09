@@ -59,23 +59,6 @@ class cooldb extends PDO
 		return $this->lastInsertId();
 	}
 
-	/**
-	 * 插入数据，当出现key重复时更新数据
-	 * INSERT ... tbl_name SET ... ON DUPLICATE KEY UPDATE ...
-	 * @param array $insertData 不存在记录时的新增数据
-	 * @param array $updateData 存在记录时的更新数据
-	 * @return int 新增记录id
-	 */
-	public function insertDuplicate(array $insertData, array $updateData)
-	{
-		$this->sql = sprintf('INSERT INTO %s SET %s ON DUPLICATE KEY UPDATE %s', $this->table,
-			implode(',', $this->joinKeyVal($insertData)), implode(',', $this->joinKeyVal($updateData)));
-		if (!$this->query($this->sql)) {
-			$this->msg = $this->errorInfo(); 
-			return false;
-		}
-		return $this->lastInsertId();
-	}
 
 	/**
 	 * 计算有多少条记录
@@ -228,20 +211,12 @@ class cooldb extends PDO
 	{
 		$arr = array();
 		foreach ($data as $k=>$v) {
-			if ($this->fields && is_array($this->fields) && is_string($k)) {
-				if (in_array($k, $this->fields)) {
-					if (is_null($v)) {
-						array_push($arr, sprintf("`%s`=NULL",$k));
-					} else {
-						array_push($arr, sprintf("`%s`=%s",$k,$this->quote($v)));
-					}
+			if (!empty($k)) {
+				if (is_null($v)) {
+					array_push($arr, sprintf('`%s`=NULL',$k));
 				} else {
-					continue;
+					array_push($arr, sprintf('`%s`=%s',$k,$this->quote($v)));
 				}
-			} elseif (is_int($k)) {
-				array_push($arr, $v);
-			} else {
-				array_push($arr, sprintf("%s=%s",$k,$this->quote($v)));
 			}
 		}
 		return $arr;
@@ -266,42 +241,7 @@ class cooldb extends PDO
 		$errInfo['sql'] = $this->sql;
 		return $errInfo;
 	}
-
-    public function exec($statement)
-    {
-        $this->debug($statement);
-        return parent::exec($statement);
-    }
-
-    public function query($statement)
-    {
-        $this->debug($statement);
-        return parent::query($statement);
-    }
-
-    private function debug($sql)
-    {
-        try {
-            if (defined('DEBUG_CONSOLE') && DEBUG_CONSOLE === true) {
-                $pattern = array(
-                    '/\{\{/',
-                    '/\}\}/',
-                    "/(\n)+/",
-                    "/(\s)+/"
-                );
-                $replacement = array(
-                    'ym_',
-                    '',
-                    ' ',
-                    ' ',
-                );
-                $sql = preg_replace($pattern, $replacement, $sql);
-                Utils_Debug::getInstance()->save($sql, $this);
-            }
-        } catch (Exception $e) {
-
-        }
-    }
+    
 }
 
 /*

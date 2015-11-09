@@ -12,7 +12,7 @@
 	**/
 	public static function info($url = 'none', $info='', $type='ok', $second = 2, $title = "提示信息")
 	{
-		$info = empty($info) ? '操作成功' : (is_string($info)?$info:json_encode($info));
+		$info = empty($info) ? '操作成功!' : (is_string($info)?$info:json_encode($info));
 		include_once template::inc('msg.html');
 		exit;
 	}

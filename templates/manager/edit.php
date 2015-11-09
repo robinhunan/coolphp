@@ -3,7 +3,7 @@
 <div class="companyInfo-con-right">
   <form action="?c=manager&a=update&id={$row['id']}"  method="post">
     <div class="navi">
-      <div class="l"><a href="#" class="h add">修改</a> <a href="?c=manager">返回管理页面</a> </div>
+      <div class="l"><a href="#" class="h add"><span class="iconfont">&#xe604;</span>&nbsp;修改</a> <a href="?c=manager">返回管理页面</a> </div>
       <div class="C"></div>
     </div>
     <table width="100%" border="0"  cellpadding="0" cellspacing="1" class="tb tpa"  >

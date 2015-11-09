@@ -1,6 +1,6 @@
 <?php
 /**
-*  管理页
+*  系统控制层入口
 * @author:
 */
 include_once SYS_PATH.'include/__ds_table__.php';
@@ -8,8 +8,9 @@ class c___table__{
 	
 	function insert(){
 		$__table__ = new __table__();
-		$res = $__table__->db->insert($_POST);
-		if ($res ==false) {
+		$arr = $__table__->checkData($_POST);
+		$res = $__table__->db->insert($arr);
+		if ($res === false) {
 			msg::info('back',$__table__->db->msg,'error');
 		} else {
 			msg::info('?c=__table__');
@@ -21,7 +22,7 @@ class c___table__{
 		$ids  = implode(',',util::convert($_REQUEST['ids']));
 		$__table__->db->where(sprintf('id in (%s)',$ids));
 		$res = $__table__->db->delete();
-		if ($res ==false) {
+		if ($res === false) {
 			msg::info('back',$__table__->db->msg,'error');
 		} else {
 			msg::info('?c=__table__');
@@ -31,8 +32,9 @@ class c___table__{
 	function update(){
 		$__table__ = new __table__();
 		$__table__->db->where('id='.(int)$_GET['id']);
-		$res = $__table__->db->update($_POST);
-		if ($res ==false) {
+		$arr = $__table__->checkData($_POST);
+		$res = $__table__->db->update($arr);
+		if ($res === false) {
 			msg::info('back',$__table__->db->msg,'error');
 		} else {
 			msg::info('?c=__table__');

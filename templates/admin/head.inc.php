@@ -3,8 +3,7 @@
 <meta charset="UTF-8">
 <title>列表页</title>
 <head>
-<link rel="stylesheet" type="text/css" href="static/css/base.css" />
-<link rel="stylesheet" type="text/css" href="static/css/admin.css" />
+<link rel="stylesheet" type="text/css" href="/static/?css/base.css;css/admin.css" />
 </head>
 <body>
 
@@ -45,8 +44,7 @@
 
 	<!--信息-->
 	<ul class="companyInfo-list">
-		<li><a href="index.html" class="activee">咨询助手</a>></li>
-		<li>欢迎页</li>
+		<li><a href="./" class="activee">导航</a>&nbsp;>&nbsp;系统管理</li>
 	</ul>
         
   
@@ -54,32 +52,33 @@
 	<div class="companyInfo-con">
 
 <!--公共左-->
-		<div class="companyInfo-left">
+    <div class="companyInfo-left">
 	<ul class="companyInfo-con-left">
-        <li class="topMargin"><a href="javascript:void(0)">咨询助手</a></li>
-        		<li class="list-type">
-             <a href="javascript:;" target="_self" class="list-type-b">咨询管理</a>
-             <img alt="" src="/static/images/down.png" />
+        <li class="topMargin">导航</li>
+             <li class="list-type">
+             <a href="javascript:;" target="_self" class="list-type-b">文章管理</a>
+	     <i class="iconfont">&#xe610;</i>
              			<ol class="secondary-list" >
-							<li><a href="#" target="_self">微信助手</a></li>
-							<li><a href="#" target="_self">微商助手</a></li>
-							<li><a href="#" target="_self">咨询助手</a></li>
+							<li><a href="?c=article" target="_self" id="c_article">文章</a></li>
+							<li><a id="c_article_class" href="?c=article_class" target="_self">文章类别</a></li>
 	            		 </ol>
 	         		</li>
 				<li class="list-type">
-             <a href="javascript:;" target="_self" class="list-type-b">在线咨询统计</a>
-             <img alt="" src="/static/images/down.png">
+             <a href="javascript:;" target="_self" class="list-type-b">用户管理</a>
+             <i class="iconfont">&#xe610;</i>
              			<ol class="secondary-list" >
-             		            <li ><a href="#">经销商统计</a></li>
-	            			</ol>
-	         		</li>
+             		            <li ><a id="c_user" href="?c=user" >用户列表</a></li>
+	            		    <li ><a id="c_member" href="?c=member" >会员</a></li>
+				    <li ><a id="c_member_type" href="?c=member_type" >会员类型</a></li>
+				</ol>
+	         	    </li>
 		    </ul>
     
-    <div class="hot-line">
-        <p>统一服务热线</p>
-		<p class="phone-fore" style="font-size: 24px;line-height: 45px;">400-888-8888</p>
-		<p>服务时间:9:00至18:00</p>
-    </div>
+	<div class="hot-line">
+	    <p>统一服务热线</p>
+		    <p class="phone-fore" style="font-size: 24px;line-height: 45px;">400-888-8888</p>
+		    <p>服务时间:9:00至18:00</p>
+	</div>
 
     </div>
     
