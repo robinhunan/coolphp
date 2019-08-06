@@ -7,13 +7,6 @@ include('../include/config.php');
 
 $control = $_GET['c']?:'manager';
 $action  = $_GET['a']?:'index';
-//检查是否登录
-$manager= new manager();
-$info = $manager->getLoginInfo();
-if(!$info[2]){
-	header('Location: ../www/?c=manager');
-	exit;
-}
 try {
 	//包含控制层文件
 	include APP_PATH.'controller/'.str_replace('_','/',cstring::filter($control)).'.php';
