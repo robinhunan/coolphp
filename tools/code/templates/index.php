@@ -1,45 +1,58 @@
-{include file="admin/head.inc.php"}
-<div class="companyInfo-con-right">
+<?php include APP_PATH.'view/head.inc.php'?>
+<div class="admin-con-right">
   <div class="navi">
-    <div class="l"><a href="?c=__table__" class="admin h"><span class="iconfont">&#xe60c;</span>&nbsp;列表管理</a> <a href="?c=__table__&a=add">添加</a> </div>
+    <div class="l"><a href="?c=__table__" class="admin h"><span class="fa fa-list"></span>&nbsp;列表管理</a> <a href="?c=__table__&a=add" class="fa fa-plus">添加</a> </div>
     <div class="C"></div>
   </div>
-  <div class="trh2 tb">   
-  <form>  
+  <div class="trh2 tb">
+    <form>
+    <input type="hidden" name="c" value="__table__" />
   &nbsp;搜&nbsp;索&nbsp;:
-  <input type="text" value="{$key}" name="key" />
  <select name="field">
  __option__
  </select>
- <input class="bt" type="submit" value="&nbsp;搜&nbsp;索&nbsp;" />
- <input type="hidden" name="c" value="__table__" />  
+ <input type="text" value="<?=$key?>" name="key" />
+ <button class="button fa fa-search" type="submit">搜索</button>
   </form>
   </div>
 
   <form action="?c=__table__" method="post">
     <table width="100%" border="0"  cellpadding="0" cellspacing="1" class="tb"  >
       <tr class="nav h30">
-        <td width='10%' align="left" class="tdl ">ID </td>
+        <td width='60' align="left" class="tdl ">ID </td>
        __field_name__
-        <td width="10%">操作</td>
+        <td width="80">操作</td>
       </tr>
-      <?php foreach((array)$rows AS $k=>$v){?> 
+      <?php foreach((array)$rows AS $k=>$v){?>
       <tr class="tr h30" >
         <td>
-          {$v[id]}
+          <?=$v[id]?>
          </td>
         __fields__
-        <td><a href='?c=__table__&a=edit&id={$v[id]}'>修改</a>&nbsp;|&nbsp;<a href='javascript:ask("?c=__table__&a=delete&ids[]={$v[id]}")'>删除</a></td>
+        <td>
+          <a href='?c=__table__&a=edit&id=<?=$v['id']?>' class="fa fa-edit">修改</a>
+          <a href='javascript:;' data-id='<?=$v['id']?>' class="fa fa-remove red">删除</a>
+        </td>
       </tr>
       <?php }?>
     </table>
-     <table width="100%" border="0"  cellpadding="0" cellspacing="1" class="tb h30">
+     <table width="100%" border="0"  cellpadding="0" cellspacing="1" class="tb">
            <tr class="nav tc">
             <td  align="right">
-                {$nav}&nbsp;
+                <?=$nav?>&nbsp;
             </td>
           </tr>
      </table>
   </form>
 </div>
-{include file="admin/foot.inc.php"}
+<script>
+   $('form').find('.fa-remove').click(function(){
+			var id = $(this).data('id');
+			if(confirm('你确认要删除这条记录?!')){
+				$.getJSON('?c=__table__&a=delete&id='+id,function(){
+					layer.msg('删除成功！',{icon:1,time:1500},function(){window.location.reload(true)});
+				})
+			}
+	});
+</script>
+<?php include APP_PATH.'view/foot.inc.php'?>

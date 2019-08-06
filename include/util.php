@@ -34,7 +34,7 @@ class util {
      *@param 转义的字符串或者数组
      */
     public static function convert($input) {
-        return is_array($input) ? array_map(null, $input) : !get_magic_quotes_gpc() ? str_replace(array("%3C",'<',"%3E",'>','"',"'"),array('&lt','&lt;','&gt;','&gt;','&quot;','&#39;'),$input) : str_replace(array("%3C",'<',"%3E",'>','"',"'"), array('&lt','&lt;','&gt;','&gt;','&quot;','&#39;'),@stripslashes($input));
+        return is_array($input) ? array_map(null, $input) : str_replace(array('<','>','"',"'",';'),array('&lt','&gt;','&quot;','&#39;',','),$input);
     }
     /*
      * 对字符串或者数组用单引号括起来,方便数据库插入操作
@@ -54,4 +54,30 @@ class util {
         }
         return $input;
     }
+    /*
+	* 设置网页过期时间
+	*/
+	public static function expire ($modTime,$maxAge=120){
+	    $sinceTime = strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']); //上次修改时间
+	    header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $modTime) . ' GMT');
+	    header('Expires: ' . gmdate('D, d M Y H:i:s', ($_SERVER['REQUEST_TIME']+$maxAge)). ' GMT');
+	    header('Cache-Control:  max-age='.$maxAge);
+	    header('ETag: '.$modTime);
+	    header('Date: ' . gmdate('D, d M Y H:i:s', $_SERVER['REQUEST_TIME']). ' GMT');
+	    if(!$modTime){
+		header('HTTP/1.1 404 Not Found');
+		exit;
+	    }
+	    //没有修改直接返回304
+	    if ($modTime==$sinceTime) {
+		    header('HTTP/1.1 304 Not Modified');
+		    exit;
+	    }
+	}
+	//输出控制台调试信息
+	public static function debug(){
+		printf('<script type="text/javascript">console.log(%s)</script>',
+			 func_num_args()>1?json_encode(func_get_args(),256):json_encode(func_get_arg(0),256)
+			);
+	}
 }

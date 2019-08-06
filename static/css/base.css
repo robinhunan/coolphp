@@ -1,16 +1,37 @@
 /* css reset */
-@charset "utf-8";
-
-*{margin:0; padding:0; font-size:12px;}
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video,input {margin: 0;padding: 0;}
+body,td,div{font-size:12px;}
 form{ margin:0px; padding:0px;}
-a:hover{ color:#FF0000; }
+a:hover{ color:#48B148; }
 img{ border:none}
 ol,ul {list-style: none;}
 button {cursor: pointer}
+input[type="input"],select {border-radius:3px; border:solid 1px #ddd;padding:3px;}
+input:focus{border-color:#0ae;transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;}
 a {color: #2A95DE;text-decoration:none}
-.C{clear:both}
-.L{float:left}
-.R{float:right}
+
+html,body,a,div,ul,ol,li,dl,dt,dd,form,select,textarea,table,h1,h2,h3,h4,p,span,img,em,i { margin: 0px; padding: 0px;}
+body {background: #f5f5f5;  }
+ul,ol {list-style: none;}
+em,i{font-style:normal}
+img {border: none;}
+a {text-decoration: none;cursor: pointer;}
+a:hover {color: #f50; text-decoration: none;}
+.f12 {font-size:12px}
+.f14 {font-size:14px}
+.f16 {font-size:16px}
+.fl{float:left}
+.fr{float:right}
+.tl{text-align: center}
+.tc{text-algin:center}
+.hide{display: none;}
+.clear::after {height: 0px; clear: both; display: block; content: " ";}
+.m10{margin:10px;}
+.p10{padding:10px;}
+a[title~=站长统计]{
+            display: none;
+}
+
 .pages{ line-height:25px;}
 .pages li{ float:left; margin-left:2px;height:20px; line-height:20px; font-weight:normal; text-align:center}
 .pages li.cur{ background:#FFFF00; border:1px #ff0000 solid}
@@ -18,19 +39,13 @@ a {color: #2A95DE;text-decoration:none}
 .pages li.cur{padding-left:4px; padding-right:4px;}
 .pages li a:hover{ border:1px #ff0000 solid; background:#FFFF00;padding-left:4px; padding-right:4px; text-decoration:none}
 
-@font-face {font-family: "iconfont";
-  src: url('/static/fonts/iconfont.eot'); /* IE9*/
-  src: url('/static/fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('/static/fonts/iconfont.woff') format('woff'), /* chrome、firefox */
-  url('/static/fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('/static/fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
-}
+.error{vertical-align: middle;color:red;  padding-left: 18px; background: url("data:image/gif;base64,R0lGODlhDgAOAMQAAOpSAPWpgPvf0O5zMPGIUPe+n////+tdEPjJsP718POecO1oIPrUwPzq4Pa0kPKTYPSof////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUUABEALAAAAAAOAA4AAAVcYCQm0AAAA5SIbHGcMHAULazEJ528AGIsgADDIUsEYAYDopBsAAOmXDLpOkVPB0ETFxskpjeY6fD4GhrJBAF1zCYDBx/jFYi8DoEH9yAqcGM0fTwxMywsUFZ1LCEAOw==") no-repeat left center;}
+.right{vertical-align: middle;width:16px; padding-left: 18px;  background: url("data:image/gif;base64,R0lGODlhDgAOAMQAAABgv0+R08/h8yB0x5/D53+v3+/1+xBqw6vL6jB+y////z+Hz9/r94+547/X72Cc14Cw36/N60KMzufw+f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUUABQALAAAAAAOAA4AAAVZICUaRQIASWGILHGcMHAgbRwnxkQZr40agoEB4gMIDQMAxHR6LGQCReDEBBQUyIaiUQQ4FBEFo0eFLRToKSxBhH0dNgiF/CjYDiJC90RokWEHfSwiS1RyLCEAOw==") no-repeat left center;}
 
-.iconfont {
-  font-family:"iconfont" !important;
-  font-size:16px;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
-}
+
+.button{border:none;background-color: #48B148;border-radius:3px;font-size:14px;color:#FFF;letter-spacing:3px;padding: 5px 10px;height:28px;}
+.button[disabled]{pointer-events:none;cursor:not-allowed;webkit-box-shadow:none;box-shadow:none;filter:alpha(opacity=50);opacity:.5;}
+.button:hover{background-color:#B4E100}
+.cancel{  border: none;  background: #cecece;  height: 25px; padding: 2px 15px 2px 15px; font-weight:bold;color:white;cursor: pointer;border-radius: 3px; }
+.cancel:hover{background:#B4E100}
+.bg-gray{background-color:#F0F0F0;}

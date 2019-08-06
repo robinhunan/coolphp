@@ -1,180 +1,183 @@
 <?php
 /**
-
- * http ²Ù×÷Àà
- * @author: yubingzhu
- */
-class Http
+* http æ“ä½œç±»
+* @author: yubingzhu
+*/
+class http
 {
-    
-    protected $_config = array();
-    protected $_cookies = '';
-    protected $_heads = array();
-    protected $_ch = '';
-    
-    private function __construct() {
-        $this->_config = array('timeout'=>2);
-    }
-
+	
+	protected $_config = array('timeout'=>10);
+	protected $_cookies = '';
+	protected $_heads = array();
+	
+	private function __construct() {
+		
+	}
+	
 	static public function getInstance(){
 		static $instance;
 		if (!isset($instance)){
-			$c = __CLASS__;
-			$instance = new $c;
+			$instance = new static();
 		}
 		return $instance;
 	}
-    
-    /**
-     * ÉèÖÃcookies
-     *
-     * @param Array $cookie $cookie['uin']=4093845;
-     * @return $this
-     */
-    public function setCookie($cookie)   {
-        if (!is_array($cookie)) {
-            $this->_cookies .=$cookie;
-        } else {
-            foreach($cookie as $k=>$v) {
-                $this->_cookies .= "$k=$v;";
-            }   
-        }
-        return $this;
-    }
-        
-    /**
-     * ÉèÖÃÇëÇóÍ·
-     *
-     * @param Array $headMap, $head['Host'] = 'www.example.com'
-     * @return $this
-     */
-    public function setHeader($headMap)    {
-        if (!is_array($headMap)) {
-            return $this;
-        }
-        $this->_heads = array_merge($this->_heads, $headMap);
-        return $this;
-    }
-    
-    /**
-     * ÉèÖÃ»ù±¾ÅäÖÃ
-     * Ö»½ÓÊÜÈçÏÂÅäÖÃ
-     * timeout:³¬Ê±Ê±¼ä
-     * proxy: ´úÀí·þÎñÆ÷ tcp://10.1.1.2:8080
-     *
-     * @param array $config
-     * @return $this
-     */
-    public function setConfig($config)    {
-        $this->_config = array_merge($this->_config, $config);
-        return $this;
-    }
-    
-    
-    /**
-     * »ñÈ¡Ö´ÐÐ×´¿öÐÅÏ¢
-     */
-    public function getInfo($opt=null)    {
-        return $opt==null ? curl_getinfo($this->ch) : curl_getinfo($this->ch,$opt);
-    }
-    
-    /**
-     * »ñÈ¡http·µ»ØÂë
-     */
-    public function getCode()    {
-        return $this->getInfo(CURLINFO_HTTP_CODE);
-    }
-    
-    /**
-     * »ñÈ¡´íÎóÐÅÏ¢
-     */
-    public function getError()    {
-        return curl_error($this->ch);
-    }
-    
-    /**
-     * ÇëÇó Ö§³ÖgetºÍpostÁ½ÖÖ·½Ê½
-     *
-     * @param string $url http://www.soso.com
-     * @param  string $postdata postÊý¾Ý ÉèÖÃ¸Ã²ÎÊýÔòÊ¹ÓÃpost·½·¨,·ñÔòÊ¹ÓÃget·½·¨
-     * @return data on succ, false on fail
-     */
-    public function request($url, $postdata = '')    {
-        if ('' === $url) {
-            return false;
-        }
-        
-        $this->ch = curl_init();
-        if (false === $this->ch) {
-            return false;
-        }
-        
-        curl_setopt($this->ch, CURLOPT_URL, $url);
-        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, 1);
-        
-        curl_setopt($this->ch, CURLOPT_ENCODING, '');
-            foreach($this->_config as $k=>$v) {
-            $k = strtoupper($k);
-            switch ($k) {
-            case 'PROXY':
-                curl_setopt($this->ch, CURLOPT_PROXY, $v);
-                break;
-            case 'TIMEOUT':
-                curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, $v);
-                curl_setopt($this->ch, CURLOPT_TIMEOUT, $v);
-                break;
-            default:
-                is_long($k) && curl_setopt($this->ch,$k,$v);
-                break;
-            }
-        }
-        if ($this->_heads) {
-            $header = array();
-            foreach($this->_heads as $k=>$v)
-            {
-                $header[] = "$k: $v";
-            }
-            
-            curl_setopt($this->ch, CURLOPT_HTTPHEADER, $header);
-        }
-        
-        if ($this->_cookies) {
-            curl_setopt($this->ch, CURLOPT_COOKIE, $this->_cookies);
-        }
-        
-        if ($postdata) {
-            curl_setopt($this->ch, CURLOPT_POST, 1);
-            curl_setopt($this->ch, CURLOPT_POSTFIELDS, $postdata);
-        } else {
-            curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
-        }
-        
-        $response = curl_exec($this->ch);
-        
-        return $response;
-    }
+	
+	/**
+	* è®¾ç½®cookies
+	*
+	* @param Array $cookie $cookie['uin']=4093845;
+	* @return $this
+	*/
+	public function setCookie($cookie)   {
+		if (!is_array($cookie)) {
+			$this->_cookies .=$cookie;
+		} else {
+			foreach($cookie as $k=>$v) {
+				$this->_cookies .= "$k=$v;";
+			}
+		}
+		return $this;
+	}
+	
+	/**
+	* è®¾ç½®è¯·æ±‚å¤´
+	*
+	* @param Array $headMap, $head['Host'] = 'www.example.com'
+	* @return $this
+	*/
+	public function setHeader($headMap)    {
+		if (!is_array($headMap)) {
+			return $this;
+		}
+		$this->_heads = array_merge($this->_heads, $headMap);
+		return $this;
+	}
+	
+	/**
+	* è®¾ç½®åŸºæœ¬é…ç½®
+	* åªæŽ¥å—å¦‚ä¸‹é…ç½®
+	* timeout:è¶…æ—¶æ—¶é—´
+	* $this->setConfig(['proxy'=>'tcp://127.0.0.1:8888']); è®¾ç½®ä»£ç†
+	* @param array $config
+	* @return $this
+	*/
+	public function setConfig($config)    {
+		$this->_config = array_merge($this->_config, $config);
+		return $this;
+	}
+	
 
-    
-    public function __destruct()
-    {
-        if ($this->ch !=null) {
-            curl_close($this->ch);
-        }
-    }
+	
+	/**
+	* èŽ·å–æ‰§è¡ŒçŠ¶å†µä¿¡æ¯
+	*/
+	public function getInfo($opt=null)    {
+		return $opt==null ? curl_getinfo($this->ch) : curl_getinfo($this->ch,$opt);
+	}
+	
+	/**
+	* èŽ·å–httpè¿”å›žç 
+	*/
+	public function getCode() {
+		return $this->getInfo(CURLINFO_HTTP_CODE);
+	}
+	
+	/**
+	* èŽ·å–é”™è¯¯ä¿¡æ¯
+	*/
+	public function getError()    {
+		return curl_error($this->ch);
+	}
+	
+	/**
+	* è¯·æ±‚ æ”¯æŒgetå’Œpostä¸¤ç§æ–¹å¼
+	*
+	* @param string $url http://www.soso.com
+	* @param  string $postdata postæ•°æ® è®¾ç½®è¯¥å‚æ•°åˆ™ä½¿ç”¨postæ–¹æ³•,å¦åˆ™ä½¿ç”¨getæ–¹æ³•
+	* @return data on succ, false on fail
+	*/
+	public function request($url, $postdata = '',$useHeader=FALSE)    {
+		if ('' === $url) {
+			return false;
+		}
+		
+		$this->ch = curl_init();
+		if (false === $this->ch) {
+			return false;
+		}
+		
+		curl_setopt($this->ch, CURLOPT_URL, $url);
+		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, 1);
+		foreach($this->_config as $k=>$v) {
+			switch ($k) {
+				case 'proxy':
+				curl_setopt($this->ch, CURLOPT_PROXY, $v);
+				break;
+				case 'timeout':
+				curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, $v);
+				curl_setopt($this->ch, CURLOPT_TIMEOUT, $v);
+				break;
+				default:
+				is_long($k) && curl_setopt($this->ch,$k,$v);
+				break;
+			}
+		}
+		if ($this->_heads) {
+			$header = array();
+			foreach($this->_heads as $k=>$v){
+				$header[] = "$k: $v";
+			}
+			curl_setopt($this->ch, CURLOPT_HTTPHEADER, $header);
+		}
+		
+		if ($this->_cookies) {
+			curl_setopt($this->ch, CURLOPT_COOKIE, $this->_cookies);
+		}
+		
+		if ($postdata) {
+			curl_setopt($this->ch, CURLOPT_POST, 1);
+			curl_setopt($this->ch, CURLOPT_POSTFIELDS, $postdata);
+		} else {
+			curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
+		}
+		//è¿”å›žhttp å¤´ä¿¡æ¯
+		if($useHeader!==FALSE){
+			curl_setopt($this->ch,CURLOPT_HEADER,1);
+		}
+		if(strncasecmp($url,'https',5)==0){
+		    curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+		    curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+		}
+		$response = curl_exec($this->ch);
+		
+		return $response;
+	}
+	
+	public function __destruct(){
+		if ($this->ch !=null) {
+			curl_close($this->ch);
+		}
+	}
 }
 /*
-  $config['timeout'] = 1;
-  //$header['Host'] = 'www.soso.com';
-  $header['User-Agent']='Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0';
-  $cookie['uin'] = 40930845;
-  $cookie['skey'] = '@xdf803380';
- 
-
-  echo $html = http::getInstance()->setConfig($config)->setCookie($cookie)->setHeader($header)
-           ->request('http://www.soso.com/q?w=test');
+$config['timeout'] = 1;
+//$header['Host'] = 'www.soso.com';
+$header['User-Agent']='Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0';
+$cookie['uin'] = 40930845;
+$cookie['skey'] = '@xdf803380';
 
 
-$url ="http://www.baidu.com";
-echo http::getInstance()->request($url);
+echo $html = http::getInstance()->setConfig($config)->setCookie($cookie)->setHeader($header)
+->request('http://www.soso.com/q?w=test');
+
+$url ='http://weixin.sogou.com/weixin?type=2&ie=utf8&query=%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83&tsn=1&ft=&et=&interation=&wxid=&usip=';
+$header['User-Agent']='Mozilla/5.0 (Windows NT 5.1; rv:19.0) Gecko/20100101 Firefox/19.0';
+$header['Referer']='http://weixin.sogou.com/weixin?type=2&ie=utf8&query=%E7%9B%B4%E9%94%80';
+$html =  http::getInstance()->setHeader($header)->request($url);
+echo $html;
+
 */
+
+
+

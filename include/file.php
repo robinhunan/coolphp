@@ -27,13 +27,8 @@ class file {
      * @return string
      */
     public static function safe($filename) {
-        $arr = explode('/', str_replace(array('\\', '..'), array('/', ''), $filename));
-        foreach ($arr as $k => $v) {
-            if (!preg_match("/^[a-z0-9\._\-]+$/i", $v)) {
-                unset($arr[$k]);
-            }
-        }
-        return implode('/', $arr);
+        $filename =  str_replace(array('\\', '..'), array('/', ''), $filename);
+        return preg_replace('/[^a-z0-9\/\.\_\-]/i','',$filename);
     }
     /**
      * 连根删除,很危险的操作!
