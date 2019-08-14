@@ -1,0 +1,8 @@
+{
+    "name": "robinhunan/coolphp",
+    "description": "php快速开发框架",
+
+    "require": {
+        "monolog/monolog": "1.0.*"
+    }
+}
