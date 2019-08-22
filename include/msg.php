@@ -50,7 +50,7 @@
 		<h1>{$type}</h1>
 		<p class="content">{$info['content']}</p>
 		<p class="jump">
-		页面自动 <a id="href" href="{$url}">跳转</a> 等待时间： <b id="wait">300</b>
+		页面自动 <a id="href" href="{$url}">跳转</a> 等待时间： <b id="wait">3</b>
 		</p>
 		</div>
 		<script type="text/javascript">
@@ -75,4 +75,3 @@ EOT;
 	}
 
 }
-msg::info(['type'=>'err','url'=>'','content'=>'保持状态']);
