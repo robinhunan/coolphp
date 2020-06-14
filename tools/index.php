@@ -4,7 +4,7 @@
 * 在浏览器中访问 tools/index.php?dsn=web&table=
  能生成对应的数据库操作代码，省得手工写
 */
-(!in_array($_SERVER['SERVER_ADDR'],['127.0.0.1','::1'])) && exit('ip not allowed');
+//(!in_array($_SERVER['SERVER_ADDR'],['127.0.0.1','::1'])) && exit('ip not allowed');
 
 define('APP_PATH',__DIR__.'/');
 include('../include/config.php');
