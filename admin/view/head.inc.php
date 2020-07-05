@@ -59,6 +59,7 @@
                     <a href="javascript:;" class="list-type-b"><span class="fa fa-angle-double-down"></span>系统管理</a>
 		    <ol class="secondary-list" >
 			   <li><a href="?c=manager">管理员</a></li>
+			    <li><a href="../tools/" target="tools">代码生成</a></li>
 		    </ol>
 	    </li>
 	</ul>

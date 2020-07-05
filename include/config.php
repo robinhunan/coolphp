@@ -1,6 +1,6 @@
 <?php
 /**
-* @author zhuyubing
+* @author yubing.zhu
 * 系统配置文件
 */
 
@@ -10,6 +10,7 @@
 !defined('SYS_PATH') && define('SYS_PATH',realpath(dirname(__FILE__).'/../').'/');
 include(SYS_PATH.'include/pool.php');
 include(SYS_PATH.'vendor/autoload.php');
+error_reporting(7);
 
 
 /**

@@ -4,10 +4,17 @@
 * 在浏览器中访问 tools/index.php?dsn=web&table=
  能生成对应的数据库操作代码，省得手工写
 */
-(!in_array($_SERVER['SERVER_ADDR'],['127.0.0.1','::1'])) && exit('ip not allowed');
 
 define('APP_PATH',__DIR__.'/');
 include('../include/config.php');
+
+//判断身份信息
+$manager= new manager();
+$info = $manager->getLoginInfo();
+if(!$info[2]){
+	echo '<h3>请先登录!</h3>;<script>settimeout(function(){location.href="../www/?c=manager";},3000);';
+	exit;
+}
 
 $dsnName = $_GET['dsn']?:'web';
 $table =$_GET['table']?:'manager'; //默认表名

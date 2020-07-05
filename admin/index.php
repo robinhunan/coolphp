@@ -1,5 +1,5 @@
 <?php
-
+// author:yubing.zhu
 //应用入口文件
 define('APP_PATH',__DIR__.'/');
 //包含通用的配置文件
