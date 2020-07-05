@@ -5,6 +5,7 @@
  能生成对应的数据库操作代码，省得手工写
 */
 
+
 define('APP_PATH',__DIR__.'/');
 include('../include/config.php');
 
@@ -12,8 +13,7 @@ include('../include/config.php');
 $manager= new manager();
 $info = $manager->getLoginInfo();
 if(!$info[2]){
-	echo '<h3>请先登录!</h3>;<script>settimeout(function(){location.href="../www/?c=manager";},3000);';
-	exit;
+	exit('<h3>请先登录!</h3><script>setTimeout(()=>{location.href="../www/?c=manager"},3000)</script>');
 }
 
 $dsnName = $_GET['dsn']?:'web';

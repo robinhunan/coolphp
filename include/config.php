@@ -3,6 +3,7 @@
 * @author yubing.zhu
 * 系统配置文件
 */
+ini_set('error_reporting',2049);
 
 /**
  * 定义系统根目录,请不要在这里加自定义函数
@@ -31,10 +32,9 @@ spl_autoload_register(function($class){
  */
 class config
 {
-	/**
-	 * 配置参数
-	 */
-	const KEY="i5%e()|',\\";
+	 //对称加密串
+	const KEY="i5%e()|',\\"; 
+	//PDO链接参数
 	static  $web = array (
 		'dsn'=>'mysql:host=localhost;port=3306;dbname=coolphp',
 		'user'=>'root',
