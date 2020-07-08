@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <title><?=$title?></title>
 <link rel="stylesheet" type="text/css" href="../static/css/admin.css" />
-<link rel="stylesheet" type="text/css" href="http://libs.baidu.com/fontawesome/4.4.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcdn.net/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="../static/css/base.css" />
 <script type="text/javascript"  src="../static/js/jquery.min.js"></script>
 <script type="text/javascript"  src="../static/?js/common.js;js/admin.js;js/validate.js;js/jquery-ui-datepicker.js"></script>

@@ -26,7 +26,7 @@
       <?php foreach((array)$rows AS $k=>$v){?>
       <tr class="tr h30" >
         <td>
-          <?=$v[id]?>
+          <?=$v['id']?>
          </td>
         __fields__
         <td>

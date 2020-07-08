@@ -3,7 +3,6 @@
 * @author yubing.zhu
 * 系统配置文件
 */
-ini_set('error_reporting',2049);
 
 /**
  * 定义系统根目录,请不要在这里加自定义函数
@@ -11,8 +10,7 @@ ini_set('error_reporting',2049);
 !defined('SYS_PATH') && define('SYS_PATH',realpath(dirname(__FILE__).'/../').'/');
 include(SYS_PATH.'include/pool.php');
 include(SYS_PATH.'vendor/autoload.php');
-error_reporting(7);
-
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 /**
  * 自动加载对象
